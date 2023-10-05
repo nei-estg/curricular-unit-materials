@@ -1,0 +1,2 @@
+1 - Descreva quais as principais características na abordagem de Sistemas de Bases Dados e compare com a abordagem de Sistemas de Ficheiros. Enuncie e explique sucintamente as principais vantagens e desvantagens de um SGBD
+

@@ -1,0 +1,120 @@
+// MD 2018/2019
+// teste 1
+//
+//3.1 --- 10AbrilV1  
+k1=0:100;
+sum(3*((-1/2)^k1))
+k2=5:50;
+sum(floor((-1)^k2))
+
+//Versão 2
+i=0:110
+s1=sum(5*(-1/3)^i)
+k2=5:50;
+s2=sum(floor((-1)^k2))
+s1+s2
+//Versão 3
+i=0:105
+s1=sum(4*(-1/4)^i)
+k2=0:30;
+s2=sum(ceil((-1)^k2))
+s1+s2
+//Versão 4
+i=0:115
+s1=sum(2*(-1/5)^i)
+k2=0:45;
+s2=sum(ceil((-1)^k2))
+s1+s2
+
+//3.2
+// - - - - - - - - - - - - - - - - - - - -
+k2=10:12;
+soma=0;
+for k1=1:30
+    soma=soma+prod(k2-1)
+end
+//versão 2
+k2=20:22;
+soma=0;
+for k1=1:25
+    k1
+    soma=soma+prod(k2-2)
+end
+//versão 3
+k2=5:7;
+soma=0;
+for k1=1:60
+    k1
+    soma=soma+prod(k2+1)
+end
+
+//versão 4
+k2=8:10;
+soma=0;
+for k1=1:55
+    k1
+    soma=soma+prod(k2+2)
+end
+//--------------------
+//5.3
+MG1=[1 1 0 0 1;1 0 1 0 0;0 1 0 1 1;0 0 1 0 1;1 0 1 1 0]
+[n,m]=size(MG1)
+ //matriz com o grau de cada vértice
+ graus_G1=[]
+ for linha=1:n
+     graus_G1(linha)= sum(MG1(linha,:))+MG1(linha,linha)
+ end
+
+MG3=[1 1 0 0; 1 0 0 2; 1 1 0 0; 1 0 0 1] 
+[n,m]=size(MG3)
+ 
+ graus_Saida_G3=[]
+ graus_Entrada_G3=[]
+ for linha=1:n
+      graus_Saida_G3(linha)= sum(MG3(linha,:));
+      graus_Entrada_G3(linha)= sum(MG3(:,linha));
+ end
+ graus_Saida_G3
+ graus_Entrada_G3
+
+ 
+//5.4
+MG3=[1 1 0 0; 1 0 0 2; 1 1 0 0; 1 0 0 1] 
+MG3^5
+//versão 2
+MG3=[1 1 0 0; 1 1 0 0;  1 0 0 2;1 0 0 1] 
+MG3^4
+//versão 3
+MG3=[1 0 0 2;1 1 0 0; 1 1 0 0;  1 0 0 1] 
+MG3^5
+//versão 4
+MG3=[ 1 0 0 1;1 1 0 0; 1 1 0 0; 1 0 0 2] 
+MG3^4
+//5.6
+MG1=[1 1 0 0 1;1 0 1 0 0;0 1 0 1 1;0 0 1 0 1;1 0 1 1 0]
+FG3=MG1+MG1^2+MG1^3+MG1^4+MG1^5
+//versão 2
+FG3=MG3+MG3^2+MG3^3+MG3^4
+MS=[1 2 1 1;2 1 0 0;1 0 0 1;1 0 1 1]
+FGS=MS+MS^2+MS^3+MS^4
+
+MG2=[1 0 0 1 0;1 0 0 0 0;1 1 1 0 0;0 0 1 0 1;0 0 1 0 0]
+FG2=MG2+MG2^2+MG2^3+MG2^4+MG2^5
+
+MG3=[1 1 0 0; 1 0 0 2; 1 1 0 0; 1 0 0 1] 
+FG2=MG3+MG3^2+MG3^3+MG3^4
+
+MG3S=[1 2 1 1;2 0 1 2;1 1 0 0;1 2 0 1]
+FG2S=MG3S+MG3S^2+MG3S^3+MG3S^4
+
+//versão 3
+MG3=[1 0 0 2;1 1 0 0; 1 1 0 0;  1 0 0 1] 
+FG3=MG3+MG3^2+MG3^3+MG3^4
+MS=[1 1 1 3;1 1 1 0;1 1 0 1;3 0 0 1]
+FGS=MS+MS^2+MS^3+MS^4
+
+//versão 4
+MG3=[ 1 0 0 1;1 1 0 0; 1 1 0 0; 1 0 0 2] 
+FG3=MG3+MG3^2+MG3^3+MG3^4
+MS=[1 1 1 2;1 1 1 0;1 1 0 0;2 0 0 2]
+FGS=MS+MS^2+MS^3+MS^4

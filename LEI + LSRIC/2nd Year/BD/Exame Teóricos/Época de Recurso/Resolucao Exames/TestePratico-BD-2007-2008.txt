@@ -1,0 +1,43 @@
+SQL LMD
+
+1 - Quais os nomes dos clientes com menos de 18 anos e respectivo número de telefone que fizeram movimentos em que o valor levantado foi superior a 200€.
+
+SELECT cl.nome, cl.telefone
+FROM Cliente cl, Movimentos m, Conta co
+WHERE cl.codC = co.codC AND
+      co.codigo = m.codigo AND
+      DATEDIFF(year,cl.dataNascimento, GETDATE()) < 18 AND
+      m.valor > 200
+
+2 - Qual o cliente com o maior número de movimentos efectuados
+
+
+SELECT cl.codC
+FROM Cliente cl, (SELECT cl.codC, COUNT(m.numero) as totalMovimentos
+		  FROM Cliente cl, Conta co, Movimentos m
+		  WHERE cl.codC = co.codC AND
+                        co.codigo = m.codigo
+		  GROUP BY cl.codC)totalMovimentos
+WHERE cl.codC = totalMovimentos.codC 
+HAVING COUNT(totalMovimentos.numero) = ( SELECT MAX(totMovimentos) as maxMovimentos
+                                         FROM (SELECT cl.codC, COUNT(m.numero) as totalMovimentos				                               FROM Cliente cl, Conta co, Movimentos m
+                                               WHERE cl.codC = co.codC AND
+                                                     co.codigo = m.codigo
+			                       GROUP BY cl.codC)totMovimentos)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

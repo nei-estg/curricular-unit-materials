@@ -1,0 +1,54 @@
+SQL LMD
+
+1 - Qual o cliente que levou o seu automóvel mais vezes à Oficina
+
+SELECT c.codC
+FROM Cliente c, (SELECT c.codC, COUNT(m.matricula) as totalMatriculas
+		 FROM Cliente c, Automovel a, Manutencao m
+ 		 WHERE c.codC = a.codC AND
+		       a.matricula = m.matricula
+		 GROUP BY c.codC)totalMatriculas
+WHERE c.codC = totalMatriculas.codC
+GROUP BY c.codC
+HAVING COUNT(totalMatriculas.matricula) = (SELECT MAX(totMatriculas.matricula) as maxMatricula
+			                  FROM (SELECT c.codC, COUNT(m.matricula) as totalMatriculas
+			                        FROM Cliente c, Automovel a, Manutencao m
+                    		 	        WHERE c.codC = a.codC AND
+ 		                                      a.matricula = m.matricula
+		                                GROUP BY c.codC)totMatriculas)
+
+2 - Quais os dias em que o mesmo cliente levou mais que um carro à Oficina
+
+SELECT c.codC, c.nome, m.data
+FROM Cliente c, Manutencao m, Automovel a
+WHERE c.codC = a.codC AND
+      a.matricula = m.matricula
+GROUP BY c.codC, c.nome, m.data
+HAVING COUNT(DISTINCT m.matricula) > 1
+----------------------------------------------------------------------------------------------------Álgebra Relacional
+
+1 - Quais os mecânicos (nome) que nunca efectuaram manutenção em carros cujo combustível fosse Gasolina.
+
+MecanicosNaoGasolina = Mecanico - π_mecanico(σ_combustivel="Gasolina" (Manutenção ⨝ Automóvel))
+
+
+
+2 - Quais os nomes dos clientes que só possuem carros movidos a GPL
+ClientesApenasGPL = Cliente - π_codC(σ_combustivel≠"GPL" (Cliente ⨝ Automóvel))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

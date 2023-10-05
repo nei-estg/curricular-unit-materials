@@ -1,0 +1,27 @@
+
+Router>enable
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#int fa0/0
+Router(config-if)#ip address 172.16.13.130 255.255.255.192
+Router(config-if)#exit
+Router(config)#int fa0/1
+Router(config-if)#ip address 192.168.13.2 255.255.255.0
+Router(config-if)#exit
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#no auto-summary
+Router(config-router)#network 172.16.13.128
+Router(config-router)#network 192.168.13.0
+Router(config-router)#passive
+Router(config-router)#passive-interface fa0/0
+Router(config-router)#exit
+Router(config)#
+
+
+Router(config)#int fa0/0
+Router(config-if)#no shutdow
+Router(config-if)#
+*May 11 13:23:15.479: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+Router(config-if)#exit
+Router(config)#

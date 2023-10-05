@@ -1,0 +1,24 @@
+SQL LMD
+
+1 - Lista ordenada dos nomes dos atletas que praticaram mais de cinco modalidades
+diferentes no 2º trimestre de 2008.
+
+SELECT a.codA, a.nome
+FROM Atleta a, Modalidade m, Tempo t
+WHERE a.codA = t.codA AND
+      m.modalidade = t.modalidade AND
+      t.data BETWEEN '01/04/2008' AND '30/06/2008'
+GROUP BY a.codA
+HAVING COUNT(DISTINCT t.modalidade) > 5 
+ORDER BY a.nome
+
+
+
+
+
+
+
+
+
+
+

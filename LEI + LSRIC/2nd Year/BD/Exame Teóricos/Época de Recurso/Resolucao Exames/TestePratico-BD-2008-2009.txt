@@ -1,0 +1,36 @@
+SQL LMD
+
+1 - Quais as localidades onde residem clientes com mais de 10 encomendas do mesmo produto.
+
+SELECT c.codC, c.localidade
+FROM Cliente c
+WHERE c.codC EXISTS ( SELECT e.codC, e.prod
+		      FROM Produto p, Cliente c, Encomenda e
+    		      WHERE p.codigo = e.codP AND
+                            c.codC = e.codC
+   		      GROUP BY e.codC, e.prod
+ 		      HAVING COUNT(e.numero) > 10)
+
+2 - Quais as encomendas de valor superior a 1000€ sem data definida
+
+SELECT e.numero
+FROM Encomenda e, Produto p
+WHERE e.codP = p.codigo AND
+      e.data = NULL
+GROUP BY e.numero
+HAVING SUM(p.preco * e.qtde) > 1000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

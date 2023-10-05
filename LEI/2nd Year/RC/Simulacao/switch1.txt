@@ -1,0 +1,54 @@
+
+Switch>enable
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 10
+Switch(config-vlan)#name Rede-A
+Switch(config-vlan)#exit
+Switch(config)#int fa0/10
+Switch(config-if)#switchport
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#exit
+Switch(config)#vlan 20
+Switch(config-vlan)#name Rede-B
+Switch(config-vlan)#exit
+Switch(config)#int fa0/20
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#exit
+Switch(config)#int fa 0/24
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#sw
+00:14:16: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/24, changed state to dow
+00:14:19: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/24, changed state to up
+% Ambiguous command:  "s"
+Switch(config-if)#switchport trunk allowed vlan 10,20
+Switch(config-if)#exit
+Switch(config)#
+
+Switch#show int fa0/24 switchport
+Name: Fa0/24
+Switchport: Enabled
+Administrative Mode: trunk
+Operational Mode: trunk
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: dot1q
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none
+Administrative private-vlan mapping: none
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk private VLANs: none
+Operational private-vlan: none
+Trunking VLANs Enabled: 10,20
+Pruning VLANs Enabled: 2-1001
+Capture Mode Disabled
+Capture VLANs Allowed: ALL
+ --More--

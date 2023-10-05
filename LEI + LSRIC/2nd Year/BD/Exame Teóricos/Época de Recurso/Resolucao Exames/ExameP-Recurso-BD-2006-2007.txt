@@ -1,0 +1,36 @@
+SQL LMD
+
+1 - Qual o aluno com nota mais elevada?
+
+SELECT a.aluno, a.nome
+FROM Alunos a, Notas n, SELECT n.aluno,a.nome, AVG (Notas.nota) as mediaNota
+			FROM Alunos a, Notas a, Disciplinas d, Cursos c
+			WHERE a.aluno = n.aluno AND
+			      n.coddisciplina = d.coddisciplina AND
+			      d.codcurso = c.codcurso
+			GROUP BY n.aluno,a.nome)mediaNotas
+WHERE a.aluno = n.aluno AND 
+      mediaNotas.mediaNota = ( SELECT MAX(totMediaNotas.nota)
+                               FROM ( SELECT n.aluno,a.nome, AVG (Notas.nota) as mediaNota
+				      FROM Alunos a, Notas a, Disciplinas d, Cursos c
+			              WHERE a.aluno = n.aluno AND
+                                            n.coddisciplina = d.coddisciplina AND
+                                            d.codcurso = c.codcurso
+                                      GROUP BY n.aluno,a.nome)totMediaNotas)
+
+
+2 - Lista das disciplinas com notas negativas do Curso “Ciências Empresariais”.
+
+SELECT d.coddisciplina, d.nome
+FROM Alunos a, Notas n, Disciplinas d, Cursos c
+WHERE a.aluno = n.aluno AND
+      n.coddisciplina = d.coddisciplina AND
+      d.codcurso = c.codcurso AND
+      c.nome = 'Ciências Empresariais'
+GROUP BY d.coddisciplina, d.nome
+HAVING AVG(n.nota) < 9.5
+
+
+
+
+

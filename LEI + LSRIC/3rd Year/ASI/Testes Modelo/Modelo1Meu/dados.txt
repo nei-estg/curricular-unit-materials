@@ -1,0 +1,7 @@
+324134A;12-23-AZ;02/09/2014;Excesso Velocidade 180KM/h A1;250.00€;10/11/2013
+124873B;32-OP-23;05/09/2014;Utilização telemóvel;100.00€;05/10/2013
+324134A;ZA-12-23;04/12/2014;Estacionamento proibido;30.00€;
+737323A;21-TI-87;03/09/2014;Ultrapassagem perigosa;250.00€;25/10/2013
+324134A;12-23-AZ;10/01/2015;Excesso Velocidade 155KM/h VCI Porto;250.00€;
+723673D;32-23-ZZ;02/10/2015;Estacionamento proibido;30.00€;
+124873B;12-OT-24;05/10/2015;Desrespeito por sinal vermelho;150.00€;

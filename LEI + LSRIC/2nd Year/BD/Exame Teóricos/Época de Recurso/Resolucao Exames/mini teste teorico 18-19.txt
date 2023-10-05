@@ -1,0 +1,63 @@
+1) Explique as diferenças entre LMD procedimentais e não procedimentais. Dê exemplos de linguagens que conheça
+
+LMD procedimentais são aquelas linguagens que se tratam da forma como é que os dados irão ser apresentados, como exemplo temos a 3GL. Já as LMD não-procedimentais são aquelas linguagens que apenas se preocupam com quais dados é que irão apresentar, como exemplo temos a 4GL.
+
+2) Descreva as diferenças entre as 5 operações de junção: Theta Join, Equijoin, Natural Join, Outer Join e Semijoin. Dê exemplos para suportar a sua resposta.
+
+Theta Join - é uma relação que contém os tuplos, das relações A e B, que respeitam o predicado F.
+
+Equijoin - é uma relaçáo que contém tuplos das relações A e B que resultam de uma igualdade no predicado
+
+Natural Join - equijoin entre 2 relações A e B sobre todos os atributos em comum
+
+Outer Join - é uma relação que contém todos os tuplos que não pertencem a A (por exemplo) mais os tuplos junção natural entre A e B
+
+Semijoin - é uma relação que contém apenas os tuplos de A que participam na junção de A com B através da satisfação de um predicado.
+
+3) Explique o que entende por Integridade Referencial. Identifique e descreva quais as ações que se podem utilizar nas subcláusulas ON DELETE e ON UPDATE
+
+Integridade Referencial consiste em que uma chave estrangeira que está associada a uma chave primária presente noutra tabela essa chave primária não seja null.
+
+As ações que se podem utilizaR nas subcláusulas ON DELETE e ON UPDATE :
+
+CASCADE - elimina as linhas da tabela pai e elimina também as linhas das respetivas tabelas filhas
+
+SET NULL - elimina as linhas da tabela pai e atribui valor null às chaves estrangeiras que estão nas outras tabelas. Nota: isto só acontece se essas chaves estrangeiras permitirem valores nulos.
+
+SET DEFAULT - elimina as linhas da tabela pai e atribui um valor por defeito às chaves estrangeiras que estão nas outras tabelas. Nota: isto só acontece se essas chaves estrangeiras tiverem valores por defeito.
+
+NO ACTION - não efetua a operação de remoção. Está por defeito 
+
+
+4) Descreva quais os passos a desenvolver no ciclo de vida de uma aplicação de BD
+
+Planeamento - passo mais importante pois é aqui que se irá planear o desenvolvimento da BD
+
+Definição do sistema - irão ser definidos quais é que irão ser os limites do sistema
+
+Análise e Recolha de requisitos - irão ser recolhidos e analisados os requisitos necessários para o desenvolvimento da base de dados
+
+Desenho da BD - a base de dados irá ser representada através dos desenhos concetual,lógico e físico
+
+Escolha do motor de BD - nesta fase irá ser estudado qual o melhor motor para a base de dados (se assim a empresa a quem está a ser desenvolvida a base de dados o permitir)
+
+Implementação - fase que irá implementar a base de dados
+
+Alimentação de dados - a BD irá ser alimentada com dados do sistema antigo (se estes existirem) para o novo sistema de BD
+
+Testes - a implementação da base de dados para verificar se está tudo bem
+
+Manutenção - criação de documentação que irá servir como um apoio para quem for efetuar a manutençao à base de dados e para quem a for utilizar
+
+6) Descreva como são usadas as técnicas de descoberta de factos no decorrer dos diferentes estágios do ciclo de vida de uma aplicação de BD
+
+Análise de documentação - irá ser feito um levantamento da documentação que os funcionários de uma empresa usam e a partir daí será analisada de modo a perceber que dados é que são utilizados nas operações (por exemplo)
+
+Entrevista - conversa cara-a-cara com um determinado funcionário da empresa de modo a tentar perceber-se como é que ele faze uma determinada operação
+
+Questionários - isto é feito quando queremos saber a opinião de um grande número de funcionários sobre como funciona a empresa (isto tem um risco elevado de não ser tão eficaz pois os funcionários podem simplesmente não chegar a responder ao questionário) 
+
+Observação do funcionamento da empresa - nesta parte é preciso observar e analisar o comportamento dos funcionários nas operações associadas à empresa, algumas das vezes pode ser necessário fazer o que eles estão a fazer para se perceber o processo.
+
+
+

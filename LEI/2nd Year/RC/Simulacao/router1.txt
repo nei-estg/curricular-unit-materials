@@ -1,0 +1,119 @@
+Router>enable
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#int fa0/0
+Router(config-if)#ip address 172.16.13.2 255.255.255.192
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#
+*May 11 14:22:11.859: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state t                                                                                        o up
+*May 11 14:22:12.859: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthern                                                                                        et0/0, changed state to up
+Router(config)#int fa0/1
+Router(config-if)#ip address
+% Incomplete command.
+
+Router(config-if)#ip address 192.168.13.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#router
+*May 11 14:22:56.159: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state t                                                                                        o up
+*May 11 14:22:57.159: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthern                                                                                        et0/1, changed state to
+% Incomplete command.
+
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#no auto-summary
+Router(config-router)#passive
+Router(config-router)#passive-interface fa0/0
+Router(config-router)#passive-interface seri
+Router(config-router)#passive-interface serial0/3/0
+Router(config-router)#network 172.16.13.0
+Router(config-router)#network 172.16.13.128
+Router(config-router)#network 192.168.13.0
+Router(config-router)#exit
+Router(config)#exit
+Router#show
+*May 11 14:25:25.387: %SYS-5-CONFIG_I: Configured from console by con
+Router#show run conf
+                 ^
+% Invalid input detected at '^' marker.
+
+Router#show run
+Building configuration...
+
+Current configuration : 883 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+ip cef
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+archive
+ log config
+  hidekeys
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 172.16.13.2 255.255.255.192
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ ip address 192.168.13.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface Serial0/3/0
+ no ip address
+ shutdown
+ no fair-queue
+!
+interface Serial0/3/1
+ no ip address
+ shutdown
+ clock rate 125000
+!
+router rip
+ version 2
+ passive-interface FastEthernet0/0
+ passive-interface Serial0/3/0
+ network 172.16.0.0
+ network 192.168.13.0
+ no auto-summary
+!
+!
+!
+ip http server
+!
+!
+!
+control-plane
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+scheduler allocate 20000 1000
+end
+
